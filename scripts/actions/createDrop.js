@@ -23,9 +23,13 @@ export default function createDrop(message) {
       console.log(data);
       // Remove the loader
       emptyNode(container);
+      // Create the retrieval URL
+      const retrievalUrl = `${window.location.origin}/retrieve/?drop=${
+        data.id
+      }`;
       // Tell user it succeeded
       const successMessage = DropInfo(
-        `You made a drop! You can retrieve it with this ID: ${data.id}.`
+        `You made a drop! You can retrieve it at this URL: <a href=${retrievalUrl}>${retrievalUrl}.</a>`
       );
       const deletionInfo = DropInfo(
         'Your drop will be deleted once it is retrieved, or after 24 hours.'

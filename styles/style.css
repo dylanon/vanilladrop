@@ -354,6 +354,10 @@ body {
   font-size: 1.6rem;
 }
 
+a {
+  color: white;
+}
+
 h1,
 h2,
 h3,
@@ -431,4 +435,8 @@ p {
   border-color: yellow;
   color: yellow;
   background: dodgerblue;
+}
+
+.retrieve-button {
+  margin: 0 auto;
 }
