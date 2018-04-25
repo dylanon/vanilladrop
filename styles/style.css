@@ -364,13 +364,13 @@ p {
   margin: 0;
 }
 
-#app {
+#root {
   display: flex;
   background: dodgerblue;
   min-height: 100vh;
 }
 
-.content {
+.app {
   margin: auto;
 }
 
@@ -390,7 +390,7 @@ p {
   text-align: center;
 }
 
-.dynamic-content {
+.main-content {
   background: rgb(95, 175, 255);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
