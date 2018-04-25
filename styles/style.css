@@ -384,6 +384,14 @@ p {
   font-family: 'Lobster Two', cursive;
 }
 
+.button {
+  display: block;
+  padding: 0.5em 1em;
+  background: white;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
 .drop-info {
   color: white;
   margin: 1em 0;
@@ -415,12 +423,7 @@ p {
 }
 
 .new-drop__submit {
-  display: block;
   margin: 0 auto;
-  padding: 0.5em 1em;
-  background: white;
-  border: 2px solid white;
-  border-radius: 5px;
 }
 
 .new-drop__submit:hover,
