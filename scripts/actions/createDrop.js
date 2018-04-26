@@ -1,6 +1,7 @@
 import DropInfo from '../components/DropInfo.js';
 import Loader from '../components/Loader.js';
 import Button from '../components/Button.js';
+import RetrievalLink from '../components/RetrievalLink.js';
 import { emptyNode } from '../utils.js';
 import reinitialize from '../actions/reinitialize.js';
 
@@ -31,12 +32,15 @@ export default function createDrop(message) {
       }`;
       // Tell user it succeeded
       const successMessage = DropInfo(
-        `You made a drop! You can retrieve it at this URL: <a href=${retrievalUrl} class="retrieval-link">${retrievalUrl}.</a>`
+        `You made a drop! You can retrieve it at this URL:`
       );
+      const retrievalInfo = DropInfo('');
+      retrievalInfo.appendChild(RetrievalLink(retrievalUrl));
       const deletionInfo = DropInfo(
         'Your drop will be deleted once it is retrieved, or after 24 hours.'
       );
       container.appendChild(successMessage);
+      container.appendChild(retrievalInfo);
       container.appendChild(deletionInfo);
       // Prevent app reload if the user clicks the retrieval link
       // Reinitialize the app in retrieval mode, and route them to the right URL

@@ -349,7 +349,6 @@ html {
 }
 
 body {
-  background: dodgerblue;
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
 }
@@ -370,7 +369,7 @@ p {
 
 #root {
   display: flex;
-  background: dodgerblue;
+  background: linear-gradient(to right bottom, dodgerblue, royalblue);
   min-height: 100vh;
 }
 
@@ -383,6 +382,7 @@ p {
   font-size: 9.6rem;
   margin: 0.3em 0;
   text-align: center;
+  text-shadow: 5px 5px 0 royalblue;
   text-transform: lowercase;
   font-style: italic;
   font-family: 'Lobster Two', cursive;
@@ -394,6 +394,14 @@ p {
   background: white;
   border: 2px solid white;
   border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover,
+.button:focus {
+  border-color: white;
+  color: white;
+  background: transparent;
 }
 
 .drop-info {
@@ -424,17 +432,11 @@ p {
   border: 0;
   border-radius: 5px;
   text-align: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .new-drop__submit {
   margin: 0 auto;
-}
-
-.new-drop__submit:hover,
-.new-drop__submit:focus {
-  border-color: white;
-  color: white;
-  background: transparent;
 }
 
 .retrieve-button {
