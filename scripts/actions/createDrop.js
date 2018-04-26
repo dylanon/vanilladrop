@@ -4,6 +4,7 @@ import Button from '../components/Button.js';
 import RetrievalLink from '../components/RetrievalLink.js';
 import { emptyNode } from '../utils.js';
 import reinitialize from '../actions/reinitialize.js';
+import { apiUrl } from '../api.js';
 
 export default function createDrop(message) {
   // Show the loader
@@ -11,7 +12,7 @@ export default function createDrop(message) {
   emptyNode(container);
   container.appendChild(Loader());
   // Send message to backend
-  fetch('http://drop-service.herokuapp.com/drop', {
+  fetch(`${apiUrl}/drop`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

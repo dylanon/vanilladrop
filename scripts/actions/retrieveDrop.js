@@ -4,6 +4,7 @@ import DropInfo from '../components/DropInfo.js';
 import { emptyNode } from '../utils.js';
 import Button from '../components/Button.js';
 import reinitialize from '../actions/reinitialize.js';
+import { apiUrl } from '../api.js';
 
 export default function retrieveDrop() {
   // Show the user we are retrieving the drop
@@ -14,7 +15,7 @@ export default function retrieveDrop() {
   const queryParams = new URLSearchParams(window.location.search);
   const dropId = queryParams.get('drop');
   // Retrieve the drop
-  fetch(`http://drop-service.herokuapp.com/retrieve/${dropId}`)
+  fetch(`${apiUrl}/retrieve/${dropId}`)
     .then(res => res.json())
     .then(data => {
       const { message } = data;
