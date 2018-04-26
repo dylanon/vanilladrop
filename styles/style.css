@@ -440,3 +440,8 @@ p {
 .retrieve-button {
   margin: 0 auto;
 }
+
+.retrieved-drop {
+  color: white;
+  text-align: center;
+}

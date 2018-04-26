@@ -1,4 +1,6 @@
 import Loader from '../components/Loader.js';
+import Drop from '../components/Drop.js';
+import DropInfo from '../components/DropInfo.js';
 import { emptyNode } from '../utils.js';
 
 export default function retrieveDrop() {
@@ -13,9 +15,40 @@ export default function retrieveDrop() {
   fetch(`http://drop-service.herokuapp.com/retrieve/${dropId}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      const { message } = data;
+      // Show the drop contents, or explain why nothing was retrieved
+      emptyNode(container);
+      if (message === null) {
+        container.appendChild(
+          DropInfo("Sorry! Couldn't find the drop you requested.")
+        );
+        container.appendChild(
+          DropInfo(
+            'You may have the wrong drop ID, the drop may have been retrieved already, or it may have expired.'
+          )
+        );
+        container.appendChild(
+          DropInfo(
+            'All drops expire (are permanently deleted) if they are not retrieved within 24 hours.'
+          )
+        );
+      } else {
+        container.appendChild(
+          DropInfo('Here are the contents of the drop you requested:')
+        );
+        container.appendChild(Drop(message));
+        container.appendChild(
+          DropInfo(
+            'This drop has been permanently deleted and cannot be retrieved again.'
+          )
+        );
+      }
     })
     .catch(err => {
       console.error(err);
+      // Tell the user something went wrong
+      emptyNode(container);
+      container.appendChild(DropInfo('Oops - Something went wrong.'));
+      container.appendChild(DropInfo('Please refresh the page and try again!'));
     });
 }
