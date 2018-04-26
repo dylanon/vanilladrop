@@ -388,6 +388,10 @@ p {
   font-family: 'Lobster Two', cursive;
 }
 
+.app-title__link {
+  text-decoration: none;
+}
+
 .button {
   display: block;
   padding: 0.5em 1em;

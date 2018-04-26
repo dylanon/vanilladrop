@@ -22,8 +22,6 @@ export default function createDrop(message) {
   })
     .then(res => res.json())
     .then(data => {
-      // Log the response to the console
-      console.log(data);
       // Remove the loader
       emptyNode(container);
       // Create the retrieval URL
