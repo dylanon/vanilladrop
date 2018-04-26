@@ -19,11 +19,9 @@ function listenForEvents() {
   }
 }
 
-function init() {
-  console.log('[APP] Starting app...');
+export function init() {
   mountApp();
   listenForEvents();
-  console.log('[APP] App started successfully!');
 }
 
 // Initialize the app when all resources have loaded

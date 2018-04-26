@@ -2,6 +2,8 @@ import Loader from '../components/Loader.js';
 import Drop from '../components/Drop.js';
 import DropInfo from '../components/DropInfo.js';
 import { emptyNode } from '../utils.js';
+import Button from '../components/Button.js';
+import reinitialize from '../actions/reinitialize.js';
 
 export default function retrieveDrop() {
   // Show the user we are retrieving the drop
@@ -50,5 +52,16 @@ export default function retrieveDrop() {
       emptyNode(container);
       container.appendChild(DropInfo('Oops - Something went wrong.'));
       container.appendChild(DropInfo('Please refresh the page and try again!'));
+    })
+    .then(() => {
+      // Show button to make another drop
+      const AnotherDropButton = Button('Make your own drop');
+      AnotherDropButton.classList.add('another-drop');
+      container.appendChild(AnotherDropButton);
+      // Listen for a click on the another drop button
+      const anotherDrop = container.querySelector('.another-drop');
+      anotherDrop.addEventListener('click', () =>
+        reinitialize('/', 'Vanilla Drop')
+      );
     });
 }

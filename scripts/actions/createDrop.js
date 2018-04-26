@@ -1,6 +1,8 @@
 import DropInfo from '../components/DropInfo.js';
 import Loader from '../components/Loader.js';
+import Button from '../components/Button.js';
 import { emptyNode } from '../utils.js';
+import reinitialize from '../actions/reinitialize.js';
 
 export default function createDrop(message) {
   // Show the loader
@@ -29,13 +31,20 @@ export default function createDrop(message) {
       }`;
       // Tell user it succeeded
       const successMessage = DropInfo(
-        `You made a drop! You can retrieve it at this URL: <a href=${retrievalUrl}>${retrievalUrl}.</a>`
+        `You made a drop! You can retrieve it at this URL: <a href=${retrievalUrl} class="retrieval-link">${retrievalUrl}.</a>`
       );
       const deletionInfo = DropInfo(
         'Your drop will be deleted once it is retrieved, or after 24 hours.'
       );
       container.appendChild(successMessage);
       container.appendChild(deletionInfo);
+      // Prevent app reload if the user clicks the retrieval link
+      // Reinitialize the app in retrieval mode, and route them to the right URL
+      const retrievalLink = container.querySelector('.retrieval-link');
+      retrievalLink.addEventListener('click', e => {
+        e.preventDefault();
+        reinitialize(`/retrieve/?drop=${data.id}`, 'Retrieve | Vanilla Drop');
+      });
     })
     .catch(err => {
       // Log the error to the console
@@ -46,5 +55,14 @@ export default function createDrop(message) {
         'Oops - something went wrong! Your drop was not stored.'
       );
       container.appendChild(failureMessage);
+    })
+    .then(() => {
+      // Show button to make another drop
+      const AnotherDropButton = Button('Make another drop');
+      AnotherDropButton.classList.add('another-drop');
+      container.appendChild(AnotherDropButton);
+      // Listen for a click on the another drop button
+      const anotherDrop = container.querySelector('.another-drop');
+      anotherDrop.addEventListener('click', () => reinitialize(null));
     });
 }

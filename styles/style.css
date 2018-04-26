@@ -432,9 +432,9 @@ p {
 
 .new-drop__submit:hover,
 .new-drop__submit:focus {
-  border-color: yellow;
-  color: yellow;
-  background: dodgerblue;
+  border-color: white;
+  color: white;
+  background: transparent;
 }
 
 .retrieve-button {
@@ -444,4 +444,8 @@ p {
 .retrieved-drop {
   color: white;
   text-align: center;
+}
+
+.another-drop {
+  margin: 0 auto;
 }
