@@ -375,6 +375,7 @@ p {
 
 .app {
   margin: auto;
+  padding: 0 1.6rem;
 }
 
 .app-title {
@@ -450,6 +451,7 @@ p {
 .retrieved-drop {
   color: white;
   text-align: center;
+  white-space: pre-wrap;
 }
 
 .another-drop {
